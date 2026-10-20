@@ -1,0 +1,5 @@
+false
+[Product(name=ノート, price=500), Product(name=ペン, price=200)]
+[ノート, 万年筆, ペン]
+500
+Product(name=消しゴム, price=100)

@@ -1,0 +1,6 @@
+OrderLine(productName=ノート, quantity=2, unitPrice=200)
+true
+OrderLine(productName=ノート, quantity=5, unitPrice=200)
+ノート x 5
+ノート 2
+ノート 5

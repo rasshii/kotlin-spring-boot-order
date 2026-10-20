@@ -1,0 +1,1 @@
+Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'String?'.

@@ -1,0 +1,2 @@
+CONFIRMED
+IllegalStateException: 下書きの注文だけを確定できます: O-001 は CONFIRMED

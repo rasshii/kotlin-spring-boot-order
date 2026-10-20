@@ -1,0 +1,3 @@
+Valid(quantity=3)
+NotANumber(text=2個)
+OutOfRange(quantity=120)

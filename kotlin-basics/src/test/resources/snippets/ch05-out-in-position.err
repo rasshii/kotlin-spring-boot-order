@@ -1,0 +1,1 @@
+Type parameter 'T' is declared as 'out' but occurs in 'in' position in type 'T (of interface Catalog<out T>)'.

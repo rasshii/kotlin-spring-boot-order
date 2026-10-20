@@ -1,0 +1,2 @@
+OrderLine(productId=P-001, quantity=2, unitPrice=1500)
+IllegalArgumentException: 数量は 1 から 99 にしてください: 0
