@@ -36,7 +36,7 @@ Gradle は同梱の Gradle Wrapper (`./gradlew`) が取得するので、別に�
 | Kotlin | 2.3.21 |
 | Java | 25 |
 
-版は `gradle/libs.versions.toml` にまとめています。
+ライブラリとプラグインの版は `gradle/libs.versions.toml` にまとめています。Java の版は、`app/build.gradle.kts` と `kotlin-basics/build.gradle.kts` の toolchain で指定しています。
 
 ## ライセンス
 

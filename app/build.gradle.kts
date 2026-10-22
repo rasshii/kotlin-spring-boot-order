@@ -44,11 +44,11 @@ kotlin {
     compilerOptions {
         /*
          * -Xjsr305=strict: JSR-305 の null 許容の注釈を付けた Java の API を、注釈どおりの null 許容の型として
-         * 扱う。付けないと誤った使い方が警告に留まり、型はプラットフォーム型のままになる。Spring 自身は
-         * JSpecify の注釈を使っており、Kotlin はこちらを付けなくても厳密に扱う。
+         * 扱う。start.spring.io の生成物と同じ設定。Spring 自身の null 許容の注釈 (JSpecify) は、Kotlin 2.1 以降、
+         * このフラグが無くても厳密に扱われる (Spring Boot の Kotlin の文書)。
          * -Xannotation-default-target=param-property: 対象を書かずにコンストラクタのプロパティへ付けた注釈を、
-         * 引数と、プロパティ (プロパティに付けられない注釈はフィールド) の両方に付ける。
-         * Spring Boot の Kotlin の文書が推奨する設定。
+         * 引数と、プロパティ (プロパティに付けられない注釈はフィールド) の両方に付ける。Kotlin 2.2 の新しい
+         * 規則に伴う警告を避けるために、Spring Boot の Kotlin の文書が推奨する設定。
          */
         freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
     }

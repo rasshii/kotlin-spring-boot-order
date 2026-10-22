@@ -1,4 +1,4 @@
-# 版はこのファイルに集める。
+# ライブラリとプラグインの版はこのファイルに集める。Java の版は、各サブプロジェクトの build.gradle.kts の toolchain で指定する。
 # Kotlin は Spring Boot 4.1.1 が既定で管理する版 (2.3.21) に合わせる。Spring Boot の Gradle プラグインは、
 # 依存管理の kotlin.version を Kotlin プラグインの版に揃えるので、ここで決めた版がそのまま使われる。
 [versions]
@@ -31,8 +31,10 @@ springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmoc
 # kotlin-basics が使うもの。Spring に依存しないので、版をここで決める。
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
+
+# app と kotlin-basics の両方が使うもの。版は、app では Spring Boot の依存管理が、kotlin-basics では junit-bom が決める。
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
