@@ -1,4 +1,7 @@
 spring:
+  flyway:
+    # 手元では、テーブルを作るマイグレーションに加えて初期データ (db/seed) を当てる。本番は db/migration だけ。
+    locations: classpath:db/migration,classpath:db/seed
   jackson:
     serialization:
       indent-output: true

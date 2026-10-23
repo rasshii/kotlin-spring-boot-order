@@ -9,7 +9,7 @@
 | `kotlin-basics/` | ガイド第 1 部 (Kotlin 入門) のコード例。Spring に依存しません。コード例はテストとして置いてあり、記事に載せた実行結果と出力を比べます |
 | `app/` | Spring Boot のアプリケーション。ガイド第 2 部から作っていきます |
 
-ガイドの記事は、main ではなく tag を指してこのリポジトリにリンクします。`api-06` は第 6 章まで、`api-07` は第 7 章まで読んだ時点のコードです。第 2 部からは、アプリが変わる章ごとに tag を付けています。
+ガイドの記事は、main ではなく tag を指してこのリポジトリにリンクします。tag `api-NN` は、第 NN 章まで読んだ時点のコードです (`api-06` は第 1 部の終わり)。第 2 部からは、アプリが変わる章ごとに tag を付けています。
 
 ## 動かすのに要るもの
 
@@ -31,7 +31,13 @@ Gradle は同梱の Gradle Wrapper (`./gradlew`) が取得するので、別に�
 ./gradlew build
 ```
 
-`bootRun` は `dev` の profile (`app/src/main/resources/application-dev.yaml`) で起動し、`app/compose.yaml` の PostgreSQL を Docker Compose で立てて接続します。アプリを止めるとコンテナも止まり、データは次の起動まで残ります。
+`bootRun` は `dev` の profile (`app/src/main/resources/application-dev.yaml`) で起動し、`app/compose.yaml` の PostgreSQL を Docker Compose で立てて接続します。`dev` の profile では、テーブルを作るマイグレーション (`db/migration`) に加えて、初期データ (`db/seed`) も当てます。アプリを止めるとコンテナも止まり、データは次の起動まで残ります。
+
+手元の DB を初期データだけの状態に戻すときは、アプリを止めてから `app/` のディレクトリで次のコマンドを打ちます。
+
+```bash
+docker compose down --volumes
+```
 
 ## 版
 
