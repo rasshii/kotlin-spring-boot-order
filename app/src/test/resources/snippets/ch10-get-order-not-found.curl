@@ -1,0 +1,1 @@
+curl -s -w '\n%{http_code}\n' http://localhost:8080/api/v1/orders/019a1c00-0000-7000-8000-000000000099
