@@ -23,6 +23,8 @@ dependencies {
     implementation(libs.jackson.module.kotlin)
     implementation(libs.kotlin.reflect)
     runtimeOnly(libs.postgresql)
+    // bootRun のときだけ classpath に入り、app/compose.yaml の PostgreSQL を立てて接続先にする。jar には入らない。
+    developmentOnly(libs.spring.boot.docker.compose)
 
     testImplementation(libs.spring.boot.starter.webmvc.test)
     testImplementation(libs.spring.boot.starter.data.jdbc.test)
@@ -56,4 +58,9 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.bootRun {
+    // 手元で動かすときの設定 (application-dev.yaml) を使う。jar を java -jar で動かすときは付かない。
+    systemProperty("spring.profiles.active", "dev")
 }

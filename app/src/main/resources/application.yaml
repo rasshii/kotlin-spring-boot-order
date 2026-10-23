@@ -1,3 +1,11 @@
 spring:
   application:
     name: shop
+  threads:
+    virtual:
+      enabled: true
+
+shop:
+  listing:
+    default-limit: 20
+    max-limit: 100

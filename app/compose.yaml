@@ -1,0 +1,12 @@
+# bootRun のときに Spring Boot が立てる PostgreSQL。テストは Testcontainers で別に立てる。
+# image はテスト (TestcontainersConfiguration) と同じメジャー版にそろえる。
+# ポートは手元の空いているポートに割り当てられ、Spring Boot がその番号を読み取って接続する。
+services:
+  postgres:
+    image: 'postgres:18'
+    environment:
+      - 'POSTGRES_DB=shop'
+      - 'POSTGRES_USER=shop'
+      - 'POSTGRES_PASSWORD=shop'
+    ports:
+      - '5432'
