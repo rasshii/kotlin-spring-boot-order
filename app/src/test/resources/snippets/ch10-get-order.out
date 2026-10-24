@@ -7,13 +7,23 @@
     "productId" : "0199f3a8-0000-7000-8000-000000000001",
     "quantity" : 2,
     "unitPrice" : 330,
-    "taxRate" : 10
+    "taxRate" : 10,
+    "subtotal" : 660
   }, {
     "productId" : "0199f3a8-0000-7000-8000-000000000005",
     "quantity" : 1,
     "unitPrice" : 1280,
-    "taxRate" : 8
+    "taxRate" : 8,
+    "subtotal" : 1280
   } ],
-  "version" : 0
+  "version" : 0,
+  "taxAmounts" : [ {
+    "taxRate" : 10,
+    "amount" : 60
+  }, {
+    "taxRate" : 8,
+    "amount" : 94
+  } ],
+  "totalAmount" : 1940
 }
 200
