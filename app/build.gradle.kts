@@ -20,6 +20,7 @@ dependencies {
     implementation(libs.spring.boot.starter.flyway)
     // Flyway は PostgreSQL への対応を別のモジュールに分けている。starter だけでは PostgreSQL に当てられない。
     implementation(libs.flyway.database.postgresql)
+    implementation(libs.spring.boot.starter.validation)
     implementation(libs.jackson.module.kotlin)
     implementation(libs.kotlin.reflect)
     runtimeOnly(libs.postgresql)
@@ -33,6 +34,8 @@ dependencies {
      * 本体の Flyway の starter を依存に含むので、足すと本体の starter が抜けても、テストの classpath に
      * Flyway の自動設定 (spring-boot-flyway) が残り、起動確認のテスト (ShopApplicationTests) が通ってしまう。
      * flyway-test が持つほかの依存 (starter-test と starter-jdbc-test) は、data-jdbc-test も持つ。
+     * 検証の test 用の starter (spring-boot-starter-validation-test) も足さない。中身は starter-test と本体の検証の
+     * starter で、starter-test は data-jdbc-test が持ち、本体の starter は上で足しているので、増えるものが無い。
      */
     testImplementation(libs.spring.boot.testcontainers)
     testImplementation(libs.testcontainers.junit.jupiter)
@@ -51,8 +54,14 @@ kotlin {
          * -Xannotation-default-target=param-property: 対象を書かずにコンストラクタのプロパティへ付けた注釈を、
          * 引数と、プロパティ (プロパティに付けられない注釈はフィールド) の両方に付ける。Kotlin 2.2 の新しい
          * 規則に伴う警告を避けるために、Spring Boot の Kotlin の文書が推奨する設定。
+         * -Xemit-jvm-type-annotations: 型に付けた Java の注釈 (List<@Valid CreateOrderLineRequest> の @Valid) を
+         * bytecode に出す。付けないと Kotlin はこの注釈を出さず、Hibernate Validator がリストの要素を検証しない。
          */
-        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+        freeCompilerArgs.addAll(
+            "-Xjsr305=strict",
+            "-Xannotation-default-target=param-property",
+            "-Xemit-jvm-type-annotations",
+        )
     }
 }
 

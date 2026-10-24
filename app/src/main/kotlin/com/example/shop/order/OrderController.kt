@@ -2,6 +2,7 @@ package com.example.shop.order
 
 import com.example.shop.product.ProductRepository
 import com.example.shop.shared.IdGenerator
+import jakarta.validation.Valid
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,16 +15,6 @@ import java.net.URI
 import java.time.Clock
 import java.util.UUID
 
-data class CreateOrderRequest(
-    val contactEmail: String,
-    val lines: List<CreateOrderLineRequest>,
-)
-
-data class CreateOrderLineRequest(
-    val productId: UUID,
-    val quantity: Int,
-)
-
 @RestController
 @RequestMapping("/api/v1/orders")
 class OrderController(
@@ -34,7 +25,7 @@ class OrderController(
 ) {
 
     @PostMapping
-    fun create(@RequestBody request: CreateOrderRequest): ResponseEntity<Order> {
+    fun create(@Valid @RequestBody request: CreateOrderRequest): ResponseEntity<Order> {
         val products = productRepository.findAllById(request.lines.map { it.productId }).associateBy { it.id }
         val lines = request.lines.map { line ->
             val product = products[line.productId] ?: return ResponseEntity.unprocessableContent().build()

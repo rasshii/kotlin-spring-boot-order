@@ -31,6 +31,7 @@ class Ch10ResponseSnippetsTest : ResponseSnippetTest() {
     fun `無い商品を指して注文を作る`() = assertSnippetResponse("ch10-create-order-unknown-product")
 
     // 練習問題の解答例が述べる挙動。応答は既定のエラー応答で日時を含むので、ステータスコードだけを確かめる。
+    // 数量 0 は、第 10 章の時点では 500。第 11 章で入力の検証を足してからは、保存の前に 400 で断る。
 
     @Test
     @Order(5)
@@ -41,7 +42,7 @@ class Ch10ResponseSnippetsTest : ResponseSnippetTest() {
     fun `数量が 0 の注文を作っても、注文の行は残らない`() {
         val before = countOrders()
 
-        assertSnippetResponse("ch10-exercise-create-order-zero-quantity", status = 500)
+        assertSnippetResponse("ch10-exercise-create-order-zero-quantity", status = 400)
 
         assertEquals(before, countOrders())
     }
