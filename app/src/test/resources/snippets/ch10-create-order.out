@@ -1,7 +1,6 @@
 {
   "id" : "019a1c00-0000-7000-8000-000000000001",
-  "contactEmail" : "taro@example.com",
-  "status" : "PENDING",
+  "status" : "pending",
   "orderedAt" : "2026-10-24T01:00:00Z",
   "lines" : [ {
     "productId" : "0199f3a8-0000-7000-8000-000000000001",
@@ -16,14 +15,13 @@
     "taxRate" : 8,
     "subtotal" : 1280
   } ],
-  "version" : 0,
+  "totalAmount" : 1940,
   "taxAmounts" : [ {
     "taxRate" : 10,
     "amount" : 60
   }, {
     "taxRate" : 8,
     "amount" : 94
-  } ],
-  "totalAmount" : 1940
+  } ]
 }
 201 /api/v1/orders/019a1c00-0000-7000-8000-000000000001

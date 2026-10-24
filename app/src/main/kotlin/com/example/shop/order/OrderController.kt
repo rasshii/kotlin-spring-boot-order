@@ -18,29 +18,29 @@ import java.util.UUID
 class OrderController(private val orderService: OrderService) {
 
     @PostMapping
-    fun create(@Valid @RequestBody request: CreateOrderRequest): ResponseEntity<Order> {
+    fun create(@Valid @RequestBody request: CreateOrderRequest): ResponseEntity<OrderResponse> {
         val command = CreateOrderCommand(
             contactEmail = request.contactEmail,
             lines = request.lines.map { CreateOrderCommand.Line(it.productId, it.quantity) },
         )
         return when (val result = orderService.create(command)) {
             is CreateOrderResult.Created ->
-                ResponseEntity.created(URI.create("/api/v1/orders/${result.order.id}")).body(result.order)
+                ResponseEntity.created(URI.create("/api/v1/orders/${result.order.id}")).body(OrderResponse.from(result.order))
             is CreateOrderResult.ProductNotFound -> ResponseEntity.unprocessableContent().build()
             is CreateOrderResult.InsufficientInventory -> ResponseEntity.status(HttpStatus.CONFLICT).build()
         }
     }
 
     @GetMapping("/{id}")
-    fun find(@PathVariable id: UUID): ResponseEntity<Order> {
+    fun find(@PathVariable id: UUID): ResponseEntity<OrderResponse> {
         val order = orderService.find(id) ?: return ResponseEntity.notFound().build()
-        return ResponseEntity.ok(order)
+        return ResponseEntity.ok(OrderResponse.from(order))
     }
 
     @PostMapping("/{id}/cancel")
-    fun cancel(@PathVariable id: UUID): ResponseEntity<Order> =
+    fun cancel(@PathVariable id: UUID): ResponseEntity<OrderResponse> =
         when (val result = orderService.cancel(id)) {
-            is CancelOrderResult.Cancelled -> ResponseEntity.ok(result.order)
+            is CancelOrderResult.Cancelled -> ResponseEntity.ok(OrderResponse.from(result.order))
             CancelOrderResult.NotFound -> ResponseEntity.notFound().build()
             CancelOrderResult.AlreadyCancelled -> ResponseEntity.status(HttpStatus.CONFLICT).build()
         }

@@ -35,7 +35,7 @@ class OrderControllerTest(@Autowired private val client: RestTestClient) {
             .body(CreateOrderRequest(contactEmail = "taro@example.com", lines = listOf(CreateOrderLineRequest(notebook, 2))))
             .exchange()
             .expectStatus().isCreated()
-            .expectBody<Order>()
+            .expectBody<OrderResponse>()
             .returnResult()
         val order = requireNotNull(created.responseBody)
 
@@ -43,7 +43,7 @@ class OrderControllerTest(@Autowired private val client: RestTestClient) {
         client.get().uri("/api/v1/orders/${order.id}")
             .exchange()
             .expectStatus().isOk()
-            .expectBody<Order>().isEqualTo(order)
+            .expectBody<OrderResponse>().isEqualTo(order)
     }
 
     @Test
