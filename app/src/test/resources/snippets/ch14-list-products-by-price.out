@@ -1,0 +1,17 @@
+{
+  "items" : [ {
+    "id" : "0199f3a8-0000-7000-8000-000000000002",
+    "name" : "ボールペン",
+    "price" : 150,
+    "taxRate" : 10,
+    "inventoryQuantity" : 100
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000003",
+    "name" : "付箋",
+    "price" : 220,
+    "taxRate" : 10,
+    "inventoryQuantity" : 30
+  } ],
+  "nextCursor" : "cHJpY2U6MjIwOjAxOTlmM2E4LTAwMDAtNzAwMC04MDAwLTAwMDAwMDAwMDAwMw"
+}
+200

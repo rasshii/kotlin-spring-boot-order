@@ -1,0 +1,35 @@
+{
+  "items" : [ {
+    "id" : "0199f3a8-0000-7000-8000-000000000002",
+    "name" : "ボールペン",
+    "price" : 150,
+    "taxRate" : 10,
+    "inventoryQuantity" : 100
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000003",
+    "name" : "付箋",
+    "price" : 220,
+    "taxRate" : 10,
+    "inventoryQuantity" : 30
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000001",
+    "name" : "ノート",
+    "price" : 330,
+    "taxRate" : 10,
+    "inventoryQuantity" : 50
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000004",
+    "name" : "マーカー",
+    "price" : 880,
+    "taxRate" : 10,
+    "inventoryQuantity" : 3
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000005",
+    "name" : "コーヒー豆",
+    "price" : 1280,
+    "taxRate" : 8,
+    "inventoryQuantity" : 20
+  } ],
+  "nextCursor" : null
+}
+200

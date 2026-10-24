@@ -1,0 +1,17 @@
+{
+  "items" : [ {
+    "id" : "0199f3a8-0000-7000-8000-000000000001",
+    "name" : "ノート",
+    "price" : 330,
+    "taxRate" : 10,
+    "inventoryQuantity" : 50
+  }, {
+    "id" : "0199f3a8-0000-7000-8000-000000000006",
+    "name" : "緑茶",
+    "price" : 540,
+    "taxRate" : 8,
+    "inventoryQuantity" : 0
+  } ],
+  "nextCursor" : "cHJpY2U6NTQwOjAxOTlmM2E4LTAwMDAtNzAwMC04MDAwLTAwMDAwMDAwMDAwNg"
+}
+200
