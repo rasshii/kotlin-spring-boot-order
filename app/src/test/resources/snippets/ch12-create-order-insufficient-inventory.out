@@ -1,1 +1,13 @@
+{
+  "detail" : "在庫の足りない商品が 1 件あります",
+  "instance" : "/api/v1/orders",
+  "status" : 409,
+  "title" : "在庫が足りません",
+  "type" : "https://notes.rewheel.dev/docs/kotlin-spring-boot-api/error-responses#insufficient-inventory",
+  "shortages" : [ {
+    "productId" : "0199f3a8-0000-7000-8000-000000000004",
+    "requested" : 5,
+    "available" : 2
+  } ]
+}
 409

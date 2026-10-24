@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test
 
 /**
  * 第 11 章の curl の例。記事に載せた順に送る。
- * どの応答も既定のエラー応答で日時を含むので、記事の結果は照合せず、ステータスコードだけを確かめる。
+ * 第 11 章の時点の応答は日時を含む既定のエラー応答で、記事の結果を照合しないので、ステータスコードだけを確かめる。
+ * 同じリクエストの第 15 章の形 (Problem Details) の応答は、Ch15ResponseSnippetsTest が照合する。
  */
 class Ch11ResponseSnippetsTest : ResponseSnippetTest() {
 

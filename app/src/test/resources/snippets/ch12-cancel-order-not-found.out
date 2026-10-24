@@ -1,1 +1,7 @@
+{
+  "detail" : "注文が見つかりません",
+  "instance" : "/api/v1/orders/019a1c00-0000-7000-8000-000000000099/cancel",
+  "status" : 404,
+  "title" : "Not Found"
+}
 404

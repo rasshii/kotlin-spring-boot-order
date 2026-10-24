@@ -1,1 +1,9 @@
+{
+  "detail" : "注文した商品のうち 1 件が見つかりません",
+  "instance" : "/api/v1/orders",
+  "status" : 422,
+  "title" : "注文した商品がありません",
+  "type" : "https://notes.rewheel.dev/docs/kotlin-spring-boot-api/error-responses#product-not-found",
+  "productIds" : [ "0199f3a8-0000-7000-8000-000000000099" ]
+}
 422

@@ -1,0 +1,12 @@
+{
+  "detail" : "入力の値の誤りが 1 件あります",
+  "instance" : "/api/v1/orders",
+  "status" : 400,
+  "title" : "入力の値に誤りがあります",
+  "type" : "https://notes.rewheel.dev/docs/kotlin-spring-boot-api/error-responses#invalid-request",
+  "errors" : [ {
+    "pointer" : "#/lines",
+    "detail" : "同じ商品の注文明細が重なっています"
+  } ]
+}
+400

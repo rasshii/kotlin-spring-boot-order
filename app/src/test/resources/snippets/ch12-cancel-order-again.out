@@ -1,1 +1,8 @@
+{
+  "detail" : "この注文はすでに取消の状態です",
+  "instance" : "/api/v1/orders/019a1c00-0000-7000-8000-000000000001/cancel",
+  "status" : 409,
+  "title" : "取消の注文は取り消せません",
+  "type" : "https://notes.rewheel.dev/docs/kotlin-spring-boot-api/error-responses#order-cancelled"
+}
 409

@@ -1,7 +1,6 @@
 package com.example.shop.order
 
 import jakarta.validation.Valid
-import jakarta.validation.constraints.AssertTrue
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.Max
 import jakarta.validation.constraints.Min
@@ -23,13 +22,9 @@ data class CreateOrderRequest(
     val contactEmail: String,
     @NotEmpty(message = "注文明細を 1 行以上入れてください")
     @Size(max = 20, message = "注文明細は 20 行以内にしてください")
+    @DistinctProducts
     val lines: List<@Valid CreateOrderLineRequest>,
-) {
-    /** 同じ商品の明細が 2 行あると、どちらの数量で注文するのかが決まらない。 */
-    @get:AssertTrue(message = "同じ商品の注文明細が重なっています")
-    val hasDistinctProducts: Boolean
-        get() = lines.distinctBy { it.productId }.size == lines.size
-}
+)
 
 data class CreateOrderLineRequest(
     val productId: UUID,

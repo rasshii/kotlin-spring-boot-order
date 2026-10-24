@@ -1,1 +1,12 @@
+{
+  "detail" : "入力の値の誤りが 1 件あります",
+  "instance" : "/api/v1/products",
+  "status" : 400,
+  "title" : "入力の値に誤りがあります",
+  "type" : "https://notes.rewheel.dev/docs/kotlin-spring-boot-api/error-responses#invalid-request",
+  "errors" : [ {
+    "parameter" : "sort",
+    "detail" : "id か price を指定してください"
+  } ]
+}
 400

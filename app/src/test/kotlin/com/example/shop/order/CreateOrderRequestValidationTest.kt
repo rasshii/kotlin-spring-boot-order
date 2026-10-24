@@ -44,12 +44,12 @@ class CreateOrderRequestValidationTest {
     }
 
     @Test
-    fun `同じ商品の明細が重なると、リクエスト全体の違反になる`() {
+    fun `同じ商品の明細が重なると、明細のリストの違反になる`() {
         val request = CreateOrderRequest(
             contactEmail = "taro@example.com",
             lines = listOf(CreateOrderLineRequest(notebook, 2), CreateOrderLineRequest(notebook, 1)),
         )
 
-        assertEquals(listOf("hasDistinctProducts: 同じ商品の注文明細が重なっています"), violations(request))
+        assertEquals(listOf("lines: 同じ商品の注文明細が重なっています"), violations(request))
     }
 }
