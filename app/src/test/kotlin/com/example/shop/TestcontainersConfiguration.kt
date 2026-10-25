@@ -15,9 +15,16 @@ import org.testcontainers.utility.DockerImageName
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
 
+    /** context ごとに 1 つ立てる。context の数だけコンテナが立ち、DB はほかの context と分かれる。 */
     @Bean
     @ServiceConnection
-    fun postgresContainer(): PostgreSQLContainer =
-        // latest にすると、新しいメジャー版が出た時点でテストの前提が黙って変わる。メジャー版で固定する。
-        PostgreSQLContainer(DockerImageName.parse("postgres:18"))
+    fun postgresContainer(): PostgreSQLContainer = PostgreSQLContainer(DockerImageName.parse(POSTGRES_IMAGE))
+
+    companion object {
+        /**
+         * テストで立てる PostgreSQL の image。latest にすると、新しいメジャー版が出た時点でテストの前提が黙って変わる
+         * ので、メジャー版で固定する。app/compose.yaml の image も同じ版にそろえる (YAML からはこの定数を参照できない)。
+         */
+        const val POSTGRES_IMAGE = "postgres:18"
+    }
 }

@@ -1,5 +1,5 @@
 # bootRun のときに Spring Boot が立てる PostgreSQL。テストは Testcontainers で別に立てる。
-# image はテスト (TestcontainersConfiguration) と同じメジャー版にそろえる。
+# image はテスト (TestcontainersConfiguration.POSTGRES_IMAGE) と同じメジャー版にそろえる。
 # ポートは手元の空いているポートに割り当てられ、Spring Boot がその番号を読み取って接続する。
 services:
   postgres:

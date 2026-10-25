@@ -3,20 +3,25 @@ package com.example.shop.order
 import com.example.shop.TestcontainersConfiguration
 import com.example.shop.product.Product
 import com.example.shop.product.ProductRepository
+import com.example.shop.shared.ClockConfiguration
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.data.jdbc.test.autoconfigure.DataJdbcTest
 import org.springframework.context.annotation.Import
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.transaction.annotation.Transactional
 import java.time.Clock
 import java.time.Instant
 import java.util.UUID
 
-@Import(TestcontainersConfiguration::class)
-@SpringBootTest
-@Transactional
+/**
+ * 注文の repository の読み書きを、Spring Data JDBC と Flyway とデータベースだけを起動して (Data JDBC のスライス)
+ * 確かめる。テストはそれぞれトランザクションの中で動き、終わりにロールバックする。
+ *
+ * スライスは repository のほかの bean (時計など) を読み込まないので、使うものを @Import で足す。
+ */
+@DataJdbcTest
+@Import(TestcontainersConfiguration::class, ClockConfiguration::class)
 class OrderRepositoryTest(
     @Autowired private val orderRepository: OrderRepository,
     @Autowired private val productRepository: ProductRepository,

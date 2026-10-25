@@ -1,5 +1,6 @@
 package exercises.ch08
 
+import com.example.shop.TestcontainersConfiguration
 import org.flywaydb.core.Flyway
 import org.flywaydb.core.api.FlywayException
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -22,7 +23,7 @@ class AddProductDescriptionMigrationTest {
     companion object {
         @Container
         @JvmStatic
-        val postgres = PostgreSQLContainer(DockerImageName.parse("postgres:18"))
+        val postgres = PostgreSQLContainer(DockerImageName.parse(TestcontainersConfiguration.POSTGRES_IMAGE))
     }
 
     private fun flyway(schema: String, exerciseLocation: String): Flyway =
